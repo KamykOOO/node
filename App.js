@@ -1,22 +1,37 @@
 import { StyleSheet, Text, View, KeyboardAvoidingView, TextInput, TouchableOpacity, ScrollView } from 'react-native';
 import Task from './components/Task'
+import { useState } from 'react';
 export default function App() {
-  const handleTask = () => { }
+
+  const [task, setTask] = useState('');
+  const [taskItems, setTaskItems] = useState([]);
+
+  const handleAddTask = () => {
+    setTaskItems([...taskItems, task]);
+    setTask('');
+  }
+
   return (
     <View style={styles.container}>
       <View style={styles.tasksWrapper}>
         <Text style={styles.sectionTitle}>
-          Tytuł taksa!
+          Tytuł taska!
         </Text>
         <View style={styles.items}>
-          <Task text="Task 1"></Task>
-          <Task text="Task 2"></Task>
-          <Task text="Task 3"></Task>
+          {
+            taskItems.map((item, index) => {
+              return (
+                <TouchableOpacity key={index}>
+                  <Task text={item}></Task>
+                </TouchableOpacity>
+              )
+            })
+          }
         </View>
       </View>
       <KeyboardAvoidingView style={styles.writeTaskWrapper}>
-        <TextInput style={styles.unput} placeholder={'Write a task'}></TextInput>
-        <TouchableOpacity onPress={() => handleTask}>
+        <TextInput style={styles.unput} placeholder={'Write a task'} value={task} onChangeText={(text) => setTask(text)}></TextInput>
+        <TouchableOpacity onPress={() => handleAddTask()}>
           <View style={styles.addWraper}>
             <Text style={styles.addText}>+</Text>
           </View>
