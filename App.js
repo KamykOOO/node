@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View } from 'react-native';
-
+import Task from './components/Task'
 export default function App() {
   return (
     <View style={styles.container}>
@@ -7,6 +7,11 @@ export default function App() {
         <Text style={styles.sectionTitle}>
           Tytuł taksa!
         </Text>
+        <View style={styles.items}>
+          <Task></Task>
+          <Task></Task>
+          <Task></Task>
+        </View>
       </View>
       <View style={styles.items}></View>
     </View>
