@@ -8,9 +8,9 @@ export default function App() {
           Tytuł taksa!
         </Text>
         <View style={styles.items}>
-          <Task></Task>
-          <Task></Task>
-          <Task></Task>
+          <Task text="Task 1"></Task>
+          <Task text="Task 2"></Task>
+          <Task text="Task 3"></Task>
         </View>
       </View>
       <View style={styles.items}></View>
